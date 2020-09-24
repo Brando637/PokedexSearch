@@ -1,14 +1,38 @@
 h1
 {
+    text-align: center;
+    background-color: gray;
+    margin-left: 200px;
+    margin-right: 200px;
     font-family: "Comic Sans MS", cursive, sans-serif;
+    color: white;
 }
 
 h2
 {
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
-
+ul
+{
+    list-style-type: none;
+}
+li
+{
+    background-color: rgb(132, 190, 188);
+    margin: 20px;
+}
 p
 {
     font-family: Verdana, Geneva, sans-serif;
+}
+img
+{
+    border: 10px solid #000000;
+    padding: 10px;
+}
+
+form
+{
+    font-family: Verdana, Geneva, sans-serif;
+    margin-left: 60px;
 }
