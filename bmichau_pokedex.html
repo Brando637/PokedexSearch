@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
         <meta name= "author" content="Brandon Michaud, Student Number: 251012153">
         <meta name="description" content="Creation of a pokedex for SE3316_Lab_1">
 
         <link href="pokedex_style.css" rel="stylesheet">
+        <title>SE 3316 Lab 1</title>
     </head>
-    <title>SE 3316 Lab 1</title>
+    
     <body>
         <h1>Welcome to the Pokedex!</h1>
 
+        
+
         <form>
-            <label for="pokName">Search for Pokemon name</label>
+            <label for="pokNum">Search for Pokemon by number</label>
+            <input type="text" id="pokNum" name="pokNum">
+            <input type="submit" id="pokNumBtn" value="Search">
+
+            <label for="pokName">Search for Pokemon by name</label>
             <input type="text" id="pokName" name="pokName">
+            <input type="submit" id="pokNameBtn" value="Search" onclick="nameSearch()">
         </form>
 
-        <ul>
+        <ul id="pokedex">
             <li><img src ="pokemon/1.png" alt="Bulbasaur">  
                 <h2>Bulbasaur</h2> 
                 <p>There is a plant seed on its back right from the day this pokemon is born. The seed slowly grows larger.</p>
@@ -105,5 +114,7 @@
 
         <h1>References</h1>
         <p>The source for Pokemon and their associated picture and descriptions come from the <a href="https://www.pokemon.com/us/pokedex/">Pokemon website</a></p>
+
+        <script src="pokedex_search.js"></script>
     </body>
 </html>
