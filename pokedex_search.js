@@ -1,6 +1,9 @@
-var pokNameSearch, ul, p;
+var pokNameSearch, pokNumSearch, ul, p;
 var outputResult = "";
 
+//We now need the strings of all the pokemon in the pokedex
+ul = document.getElementsByTagName("h2");//Gets all of the elements with the pokemon's names, stores in an array
+p = document.getElementsByTagName("p");//Gets all of the pokemon's descriptions
 
 document.getElementById("pokName")
     .addEventListener("keydown", function (event) {
@@ -18,8 +21,39 @@ document.getElementById("pokName")
         }
     });
 
+document.getElementById("pokNum")
+    .addEventListener("keydown", function (event) {
+        if (event.code === "Enter") {
+            event.preventDefault();
+        }
+    });
 
+document.getElementById("pokNum")
+    .addEventListener("keyup", function (event) {
+        //Stops a form from being submitted when enter is pressed   
+        if (event.code === "Enter") {
 
+            document.getElementById("pokNumBtn").click()
+        }
+    });
+
+function numSearch() {
+
+    pokNumSearch = document.getElementById("pokNum").value;
+
+    if(pokNumSearch <= 20)
+    {
+        outputResult = ul[pokNumSearch-1].innerText + ": " + p[pokNumSearch-1].innerText + "\n";
+
+        alert(outputResult);
+    }
+
+    else
+    {
+        alert("Sorry, but please enter a value from 1-20.");
+    }
+
+}
 
 function nameSearch() {
     //First we want to get the value from the textField that we are going to do our search
@@ -32,9 +66,7 @@ function nameSearch() {
     {
         pokNameSearch = pokNameSearch.toUpperCase();
 
-        //We now need the strings of all the pokemon in the pokedex
-        ul = document.getElementsByTagName("h2");//Gets all of the elements with the pokemon's names
-        p = document.getElementsByTagName("p");//Gets all of the pokemon's descriptions
+        
 
         //Compares each element to see if it matches the search input
         for (i = 0; i < ul.length; i++) {

@@ -19,6 +19,7 @@ ul
 li
 {
     background-color: rgb(132, 190, 188);
+    border: 10px solid black;
     margin: 20px;
 }
 p
@@ -27,7 +28,6 @@ p
 }
 img
 {
-    border: 10px solid #000000;
     padding: 10px;
 }
 
@@ -35,4 +35,11 @@ form
 {
     font-family: Verdana, Geneva, sans-serif;
     margin-left: 60px;
+    color: white;
+}
+
+label
+{
+    background-color: red;
+    padding: 10px;
 }
