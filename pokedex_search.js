@@ -1,9 +1,10 @@
-var pokNameSearch, pokNumSearch, ul, p;
+var pokNameSearch, pokNumSearch, ul, p, num;
 var outputResult = "";
 
 //We now need the strings of all the pokemon in the pokedex
 ul = document.getElementsByTagName("h2");//Gets all of the elements with the pokemon's names, stores in an array
 p = document.getElementsByTagName("p");//Gets all of the pokemon's descriptions
+num = document.getElementsByTagName("num");//Gets all of the pokemon's numbers. This number is hidden from the viewer
 
 document.getElementById("pokName")
     .addEventListener("keydown", function (event) {
@@ -41,9 +42,18 @@ function numSearch() {
 
     pokNumSearch = document.getElementById("pokNum").value;
 
+    let numAdded = 0;
+
     if(pokNumSearch <= 20)
     {
-        outputResult = ul[pokNumSearch-1].innerText + ": " + p[pokNumSearch-1].innerText + "\n";
+        for(i = 0;i < num.length;i++)
+        {
+            if(num[i].innerText.includes(pokNumSearch) && numAdded < 5)
+            {
+                outputResult = outputResult + (i+1) + ". " + ul[i].innerText + ": " + p[i].innerText + "\n";
+                numAdded += 1;
+            }
+        }
 
         alert(outputResult);
     }
@@ -56,10 +66,9 @@ function numSearch() {
 }
 
 function nameSearch() {
-    //First we want to get the value from the textField that we are going to do our search
     pokNameSearch = document.getElementById("pokName").value;//Gets the value from search box then converts it into the string value we need
 
-    let isOnlyLetters = onlyLetters(pokNameSearch);
+    let isOnlyLetters = onlyLetters(pokNameSearch);//Check to see if the input is only letters
     let numAdded = 0;
 
     if (isOnlyLetters  && (pokNameSearch.length <= 20)) 
@@ -73,7 +82,7 @@ function nameSearch() {
             
             if (ul[i].innerText.toUpperCase().includes(pokNameSearch) && numAdded < 5)//Takes HTML object and takes out the text and compares it to the search to see if there are ay matches
             {
-                outputResult = outputResult + ul[i].innerText + ": " + p[i].innerText + "\n";//Any matches get added to the final output result
+                outputResult = outputResult + (i+1) + ". " + ul[i].innerText + ": " + p[i].innerText + "\n";//Any matches get added to the final output result
 
                 numAdded += 1;
             }
