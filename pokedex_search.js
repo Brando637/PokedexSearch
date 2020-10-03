@@ -6,7 +6,7 @@ ul = document.getElementsByTagName("h2");//Gets all of the elements with the pok
 p = document.getElementsByTagName("p");//Gets all of the pokemon's descriptions
 num = document.getElementsByTagName("num");//Gets all of the pokemon's numbers. This number is hidden from the viewer
 
-document.body.onload = addElement;
+document.body.onload = addElement, addListeners;
 
 function addElement(){
     var ulTop = document.getElementById("pokedex");
@@ -15,38 +15,41 @@ function addElement(){
     document.body.insertBefore(div, ulTop);
 }
 
+function addListeners(){
+    document.getElementById("pokName")
+        .addEventListener("keydown", function (event) {
+            if (event.code === "Enter") {
+                event.preventDefault();
+            }
+        });
 
-document.getElementById("pokName")
-    .addEventListener("keydown", function (event) {
-        if (event.code === "Enter") {
-            event.preventDefault();
-        }
-    });
+    document.getElementById("pokName")
+        .addEventListener("keyup", function (event) {
+            //Stops a form from being submitted when enter is pressed   
+            if (event.code === "Enter") {
 
-document.getElementById("pokName")
-    .addEventListener("keyup", function (event) {
-        //Stops a form from being submitted when enter is pressed   
-        if (event.code === "Enter") {
+                document.getElementById("pokNameBtn").click()
+            }
+        });
 
-            document.getElementById("pokNameBtn").click()
-        }
-    });
+    document.getElementById("pokNum")
+        .addEventListener("keydown", function (event) {
+            if (event.code === "Enter") {
+                event.preventDefault();
+            }
+        });
 
-document.getElementById("pokNum")
-    .addEventListener("keydown", function (event) {
-        if (event.code === "Enter") {
-            event.preventDefault();
-        }
-    });
+    document.getElementById("pokNum")
+        .addEventListener("keyup", function (event) {
+            //Stops a form from being submitted when enter is pressed   
+            if (event.code === "Enter") {
 
-document.getElementById("pokNum")
-    .addEventListener("keyup", function (event) {
-        //Stops a form from being submitted when enter is pressed   
-        if (event.code === "Enter") {
+                document.getElementById("pokNumBtn").click()
+            }
+        });
 
-            document.getElementById("pokNumBtn").click()
-        }
-    });
+}
+
 
 function numSearchAlert() {
 
