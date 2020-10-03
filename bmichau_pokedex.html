@@ -10,18 +10,16 @@
     </head>
     
     <body>
-        <h1>Welcome to the Pokedex!</h1>
-
-        
+        <h1>Welcome to the Pokedex!</h1>        
 
         <form>
             <label for="pokNum">Search for Pokemon by number</label>
-            <input type="text" id="pokNum" name="pokNum">
-            <input type="submit" id="pokNumBtn" value="Search" onclick="numSearch()">
+            <input type="text" id="pokNum" name="pokNum" onkeyup="numSearch()">
+            <input type="submit" id="pokNumBtn" value="Search" onclick="numSearchAlert()">
 
             <label for="pokName">Search for Pokemon by name</label>
-            <input type="text" id="pokName" name="pokName">
-            <input type="submit" id="pokNameBtn" value="Search" onclick="nameSearch()">
+            <input type="text" id="pokName" name="pokName"onkeyup="nameSearch()">
+            <input type="submit" id="pokNameBtn" value="Search" onclick="nameSearchAlert()">
         </form>
 
         <ul id="pokedex">

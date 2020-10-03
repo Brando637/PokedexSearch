@@ -6,6 +6,16 @@ ul = document.getElementsByTagName("h2");//Gets all of the elements with the pok
 p = document.getElementsByTagName("p");//Gets all of the pokemon's descriptions
 num = document.getElementsByTagName("num");//Gets all of the pokemon's numbers. This number is hidden from the viewer
 
+document.body.onload = addElement;
+
+function addElement(){
+    var ulTop = document.getElementById("pokedex");
+    var div = document.createElement("div");//Section where output will be listed dynamically
+    div.className = "dySearchOut";
+    document.body.insertBefore(div, ulTop);
+}
+
+
 document.getElementById("pokName")
     .addEventListener("keydown", function (event) {
         if (event.code === "Enter") {
@@ -38,7 +48,7 @@ document.getElementById("pokNum")
         }
     });
 
-function numSearch() {
+function numSearchAlert() {
 
     pokNumSearch = document.getElementById("pokNum").value;
 
@@ -65,7 +75,7 @@ function numSearch() {
 
 }
 
-function nameSearch() {
+function nameSearchAlert() {
     pokNameSearch = document.getElementById("pokName").value;//Gets the value from search box then converts it into the string value we need
 
     let isOnlyLetters = onlyLetters(pokNameSearch);//Check to see if the input is only letters
@@ -74,8 +84,6 @@ function nameSearch() {
     if (isOnlyLetters  && (pokNameSearch.length <= 20)) 
     {
         pokNameSearch = pokNameSearch.toUpperCase();
-
-        
 
         //Compares each element to see if it matches the search input
         for (i = 0; i < ul.length; i++) {
@@ -113,4 +121,13 @@ function onlyLetters(enteredText) {
     if (/^[a-zA-Z]+$/.test(enteredText)) { return true; }
 
     else { return false; }
+}
+
+function nameSearch(){
+    
+
+}
+
+function numSearch(){
+
 }
