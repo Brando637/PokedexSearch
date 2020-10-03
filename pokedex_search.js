@@ -137,37 +137,33 @@ function nameSearch(){
     }
 
     //If there isn't a list we will create one and populate it
-    else
-    {
-        var innerList = document.createElement("ul");
-        innerList.id = "dySearchList";
+    var innerList = document.createElement("ul");
+    innerList.id = "dySearchList";
 
 
-        var divList = document.getElementById("dySearchOut");
+    var divList = document.getElementById("dySearchOut");
 
-        pokNameSearch = document.getElementById("pokName").value;//Gets the value from search box then converts it into the string value we need
-        pokNameSearch = pokNameSearch.toUpperCase();
+    pokNameSearch = document.getElementById("pokName").value;//Gets the value from search box then converts it into the string value we need
+    pokNameSearch = pokNameSearch.toUpperCase();
 
-        for (i = 0; i < listName.length; i++) 
-        {
-            let listPoint;
-            if (listName[i].innerText.toUpperCase().includes(pokNameSearch)) 
-            {
-                listPoint = document.createElement("li");
-                listPoint.id = i;
-                let pokImg = images[i];
-                let pName = listName[i];
-                let pokDes = descript[i];
-                listPoint.appendChild(pokImg.cloneNode(true));
-                listPoint.appendChild(pName.cloneNode(true));
-                listPoint.appendChild(pokDes.cloneNode(true));
-                innerList.appendChild(listPoint);
-            }
-
+    for (i = 0; i < listName.length; i++) {
+        let listPoint;
+        if (listName[i].innerText.toUpperCase().includes(pokNameSearch)) {
+            listPoint = document.createElement("li");
+            listPoint.id = i;
+            let pokImg = images[i];
+            let pName = listName[i];
+            let pokDes = descript[i];
+            listPoint.appendChild(pokImg.cloneNode(true));
+            listPoint.appendChild(pName.cloneNode(true));
+            listPoint.appendChild(pokDes.cloneNode(true));
+            innerList.appendChild(listPoint);
         }
 
-        divList.appendChild(innerList);
     }
+
+    divList.appendChild(innerList);
+
     
 
 }
