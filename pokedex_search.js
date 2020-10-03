@@ -1,17 +1,18 @@
-var pokNameSearch, pokNumSearch, ul, p, num;
+var pokNameSearch, pokNumSearch, listName, descript, num, images;
 var outputResult = "";
 
 //We now need the strings of all the pokemon in the pokedex
-ul = document.getElementsByTagName("h2");//Gets all of the elements with the pokemon's names, stores in an array
-p = document.getElementsByTagName("p");//Gets all of the pokemon's descriptions
+listName = document.getElementsByTagName("h2");//Gets all of the elements with the pokemon's names, stores in an array
+descript = document.getElementsByTagName("p");//Gets all of the pokemon's descriptions
 num = document.getElementsByTagName("num");//Gets all of the pokemon's numbers. This number is hidden from the viewer
+images = document.getElementsByTagName("img");//Get all of the pokemon's images.
 
 document.body.onload = addElement, addListeners;
 
 function addElement(){
     var ulTop = document.getElementById("pokedex");
     var div = document.createElement("div");//Section where output will be listed dynamically
-    div.className = "dySearchOut";
+    div.id = "dySearchOut";
     document.body.insertBefore(div, ulTop);
 }
 
@@ -63,7 +64,7 @@ function numSearchAlert() {
         {
             if(num[i].innerText.includes(pokNumSearch) && numAdded < 5)
             {
-                outputResult = outputResult + (i+1) + ". " + ul[i].innerText + ": " + p[i].innerText + "\n";
+                outputResult = outputResult + (i+1) + ". " + listName[i].innerText + ": " + descript[i].innerText + "\n";
                 numAdded += 1;
             }
         }
@@ -89,11 +90,11 @@ function nameSearchAlert() {
         pokNameSearch = pokNameSearch.toUpperCase();
 
         //Compares each element to see if it matches the search input
-        for (i = 0; i < ul.length; i++) {
+        for (i = 0; i < listName.length; i++) {
             
-            if (ul[i].innerText.toUpperCase().includes(pokNameSearch) && numAdded < 5)//Takes HTML object and takes out the text and compares it to the search to see if there are ay matches
+            if (listName[i].innerText.toUpperCase().includes(pokNameSearch) && numAdded < 5)//Takes HTML object and takes out the text and compares it to the search to see if there are ay matches
             {
-                outputResult = outputResult + (i+1) + ". " + ul[i].innerText + ": " + p[i].innerText + "\n";//Any matches get added to the final output result
+                outputResult = outputResult + (i+1) + ". " + listName[i].innerText + ": " + descript[i].innerText + "\n";//Any matches get added to the final output result
 
                 numAdded += 1;
             }
@@ -127,7 +128,29 @@ function onlyLetters(enteredText) {
 }
 
 function nameSearch(){
+    var innerList = document.createElement("ul");
     
+    //innerList.id = "dySearchList";
+    var divList = document.getElementById("dySearchOut");
+    
+    pokNameSearch = document.getElementById("pokName").value;//Gets the value from search box then converts it into the string value we need
+    pokNameSearch = pokNameSearch.toUpperCase();
+
+    for (i = 0; i < listName.length; i++)
+    {
+        let listPoint;
+        if (listName[i].innerText.toUpperCase().includes(pokNameSearch))
+        {
+            listPoint = document.createElement("li");
+            listPoint.appendChild(images[i]);
+            listPoint.appendChild(listName[i]);
+            listPoint.appendChild(descript[i]);
+            innerList.appendChild(listPoint);
+        }
+        
+    }
+    
+    divList.appendChild(innerList);
 
 }
 
