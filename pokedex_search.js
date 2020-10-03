@@ -128,32 +128,60 @@ function onlyLetters(enteredText) {
 }
 
 function nameSearch(){
-    var innerList = document.createElement("ul");
-    
-    //innerList.id = "dySearchList";
-    var divList = document.getElementById("dySearchOut");
-    
-    pokNameSearch = document.getElementById("pokName").value;//Gets the value from search box then converts it into the string value we need
-    pokNameSearch = pokNameSearch.toUpperCase();
 
-    for (i = 0; i < listName.length; i++)
+    //Need to first check if a list has been created before
+    //If there is a list, then we need to get rid of it
+    if(document.getElementById("dySearchList"))
     {
-        let listPoint;
-        if (listName[i].innerText.toUpperCase().includes(pokNameSearch))
+        removeList();
+    }
+
+    //If there isn't a list we will create one and populate it
+    else
+    {
+        var innerList = document.createElement("ul");
+        innerList.id = "dySearchList";
+
+
+        var divList = document.getElementById("dySearchOut");
+
+        pokNameSearch = document.getElementById("pokName").value;//Gets the value from search box then converts it into the string value we need
+        pokNameSearch = pokNameSearch.toUpperCase();
+
+        for (i = 0; i < listName.length; i++) 
         {
-            listPoint = document.createElement("li");
-            listPoint.appendChild(images[i]);
-            listPoint.appendChild(listName[i]);
-            listPoint.appendChild(descript[i]);
-            innerList.appendChild(listPoint);
+            let listPoint;
+            if (listName[i].innerText.toUpperCase().includes(pokNameSearch)) 
+            {
+                listPoint = document.createElement("li");
+                listPoint.id = i;
+                let pokImg = images[i];
+                let pName = listName[i];
+                let pokDes = descript[i];
+                listPoint.appendChild(pokImg.cloneNode(true));
+                listPoint.appendChild(pName.cloneNode(true));
+                listPoint.appendChild(pokDes.cloneNode(true));
+                innerList.appendChild(listPoint);
+            }
+
         }
-        
+
+        divList.appendChild(innerList);
     }
     
-    divList.appendChild(innerList);
 
 }
 
 function numSearch(){
+
+}
+
+//This will destroy the current list that exists
+function removeList(){
+    var divList = document.getElementById("dySearchOut");
+    while(divList.firstChild)
+    {
+        divList.removeChild(divList.lastChild);
+    }
 
 }
