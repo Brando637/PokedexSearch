@@ -90,18 +90,16 @@ function nameSearchAlert() {
         pokNameSearch = pokNameSearch.toUpperCase();
 
         //Compares each element to see if it matches the search input
-        for (i = 0; i < listName.length; i++) {
+        for (i = 0; i < listName.length; i++) 
+        {
             
             if (listName[i].innerText.toUpperCase().includes(pokNameSearch) && numAdded < 5)//Takes HTML object and takes out the text and compares it to the search to see if there are ay matches
             {
                 outputResult = outputResult + (i+1) + ". " + listName[i].innerText + ": " + descript[i].innerText + "\n";//Any matches get added to the final output result
-
                 numAdded += 1;
             }
 
         }
-
-        console.log(outputResult);
 
         alert(outputResult);
     }
