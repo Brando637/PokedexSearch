@@ -171,6 +171,44 @@ function nameSearch(){
 
 function numSearch(){
 
+    pokNumSearch = document.getElementById("pokNum").value;
+
+    if(document.getElementById("dySearchList"))
+    {
+        removeList();
+    }
+
+    //If there isn't a list we will create one and populate it
+    var innerList = document.createElement("ul");
+    innerList.id = "dySearchList";
+
+
+    var divList = document.getElementById("dySearchOut");
+
+    for (i = 0; i < num.length; i++) 
+    {
+        let listPoint;
+        if (num[i].innerText.includes(pokNumSearch)) 
+        {
+            listPoint = document.createElement("li");
+            listPoint.id = i;
+            let pokImg = images[i];
+            let pName = listName[i];
+            let pokDes = descript[i];
+            listPoint.appendChild(pokImg.cloneNode(true));
+            listPoint.appendChild(pName.cloneNode(true));
+            listPoint.appendChild(pokDes.cloneNode(true));
+            innerList.appendChild(listPoint);
+        }
+    }
+    divList.appendChild(innerList);
+
+    //If the user removes all characters from the form then we want to remove the search result list
+    if(pokNumSearch == "")
+    {
+        removeList();
+    }
+
 }
 
 //This will destroy the current list that exists
