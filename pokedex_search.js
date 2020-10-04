@@ -4,7 +4,7 @@ var outputResult = "";
 //We now need the strings of all the pokemon in the pokedex
 listName = document.getElementsByTagName("h2");//Gets all of the elements with the pokemon's names, stores in an array
 descript = document.getElementsByTagName("p");//Gets all of the pokemon's descriptions
-num = document.getElementsByTagName("num");//Gets all of the pokemon's numbers. This number is hidden from the viewer
+num = document.getElementsByTagName("h3");//Gets all of the pokemon's numbers. This number is hidden from the viewer
 images = document.getElementsByTagName("img");//Get all of the pokemon's images.
 
 document.body.onload = addElement, addListeners;
