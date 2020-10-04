@@ -17,18 +17,21 @@ ul
     list-style-type: none;
     padding-left: 0px;
 }
-li
+
+ul li
 {
     background-color: rgb(132, 190, 188);
     border: 10px solid black;
-    margin: 20px;
+    margin: 10px;
 }
+
 p
 {
     font-family: Verdana, Geneva, sans-serif;
 }
 img
 {
+    align-content: center;
     padding: 10px;
 }
 
@@ -60,4 +63,21 @@ label
     background-color: #88aed0;
     border: groove 10px white;
     color: white;
+}
+
+.text-container
+{
+    grid-area: txt;
+    padding-top: 5%;
+}
+.image-container
+{
+    grid-area: img;
+    
+}
+.grid-container
+{
+    display: grid;
+    grid-template-areas: 
+    'img img txt txt txt';
 }
