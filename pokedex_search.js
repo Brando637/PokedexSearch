@@ -159,13 +159,14 @@ function nameSearch(){
             listPoint.appendChild(pokDes.cloneNode(true));
             innerList.appendChild(listPoint);
         }
-
     }
-
     divList.appendChild(innerList);
 
-    
-
+    //If the user removes all characters from the form then we want to remove the search result list
+    if(pokNameSearch == "")
+    {
+        removeList();
+    }
 }
 
 function numSearch(){
